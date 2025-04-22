@@ -72,7 +72,7 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
-                    <a href="{{ route('cart') }}" class="position-relative d-inline-block">
+                    <a href="{{ route('shopping-cart') }}" class="position-relative d-inline-block">
                         <i class="fa-solid fa-cart-shopping text-success fs-4"></i>
 
                     </a>

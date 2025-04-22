@@ -17,8 +17,8 @@ class GameSeeder extends Seeder
     public function run(): void
     {
         $juegos = Game::all();
-        $tags = Tag::pluck('id')->toArray();
-
+        $tags = Tag::pluck('tags.id')->toArray();
+        
         foreach ($juegos as $item) {
             shuffle($tags);
             $item->tags()->attach($this->getTags($tags));

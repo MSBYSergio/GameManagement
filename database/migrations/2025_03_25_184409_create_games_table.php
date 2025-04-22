@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->unique();
+            $table -> string('stripe_id') -> nullable();
+            $table -> string('stripe_price_id') -> nullable();
+            $table->string('image');
             $table->string('name')->unique();
             $table->decimal('price', 4, 2);
             $table->boolean('discount');
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('juegos');
+        Schema::dropIfExists('games');
     }
 };

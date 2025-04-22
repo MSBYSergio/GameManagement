@@ -17,7 +17,7 @@ class GameFactory extends Factory
     public function definition(): array
     {
         fake()->addProvider(new \Mmo\Faker\PicsumProvider(fake()));
-        $price = fake()->randomFloat(2, 1, 80);
+        $price = fake()->randomFloat(2, 1, 80) * 1.21;
         $is_discount = fake()->boolean(65);
         $percent = random_int(10, 70);
         return [
@@ -30,6 +30,8 @@ class GameFactory extends Factory
             'discount_price' => $is_discount ? $price - ($price * ($percent / 100)) : null,
             'developer' => fake()->word(),
             'requirements' => fake()->text(25),
+            'stripe_id' => null,
+            'stripe_price_id' => null,
         ];
     }
 }
