@@ -55,9 +55,7 @@
                 timer: 1500
             });
         })
-    </script>
 
-    <script>
         Livewire.on('confirmDelete', (id) => {
             Swal.fire({
                 title: "Are you sure?",
@@ -73,8 +71,23 @@
                 }
             });
         });
+
+        Livewire.on('ERROR', (txt) => {
+
+        });
     </script>
 
+    @if (session('ERROR'))
+    <script>
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "{{session('ERROR')}}",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    </script>
+    @endif
 </body>
 
 </html>

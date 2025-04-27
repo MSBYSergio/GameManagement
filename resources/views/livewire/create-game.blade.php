@@ -1,8 +1,10 @@
 <div>
     <div class="d-flex justify-content-end">
-        <x-button class="mb-2" wire:click="$set('openModalCrear',true)"><i class="fa-solid fa-plus me-2"></i>Insertar</x-button>
+        <x-button class="mb-2" wire:click="$set('openModalCreate',true)"><i class="fa-solid fa-plus me-2"></i>Insertar</x-button>
     </div>
-    <x-dialog-modal wire:model="openModalCrear">
+
+    <!-- Modal para crear un juego -->
+    <x-dialog-modal wire:model="openModalCreate">
         <x-slot name="title">
             <h2 class="text-lg font-semibold text-gray-900">Crear Nuevo Juego</h2>
         </x-slot>
@@ -17,7 +19,6 @@
                         <input type="text" id="name" wire:model="cForm.name" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                         <x-input-error for="cForm.name" />
                     </div>
-
                     <!-- Desarrollador -->
                     <div>
                         <label for="developer" class="block text-sm font-medium text-gray-700">Desarrollador</label>
@@ -55,7 +56,6 @@
                     </div>
                 </div>
 
-                <!-- Columna derecha -->
                 <div class="space-y-3">
                     <!-- Descripción -->
                     <div>
@@ -75,7 +75,7 @@
                     <div>
                         <label for="image" class="block text-sm font-medium text-gray-700">Imagen</label>
                         <input wire:model="cForm.image" type="file" id="image" class="w-full text-sm text-gray-500 file:mr-4 file:py-1 file:px-3 file:rounded-md file:text-sm file:bg-indigo-50">
-                        <x-input-error for="cForm.image"/>
+                        <x-input-error for="cForm.image" />
                     </div>
 
                     <!-- Tags -->
@@ -87,10 +87,10 @@
                                 <input type="checkbox" wire:model="cForm.tags" value="{{$item -> id}}" class="rounded border-gray-300">
                                 <span class="ml-2 text-xs">{{$item -> name}}</span>
                             </label>
-                            @endforeach 
+                            @endforeach
                         </div>
                     </div>
-                    <x-input-error for="cForm.tags"/>  
+                    <x-input-error for="cForm.tags" />
                 </div>
             </div>
         </x-slot>

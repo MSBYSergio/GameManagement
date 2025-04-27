@@ -19,7 +19,7 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_opinion' => fake()->randomElement(['Recomended', 'Not Recomended']),
+            'user_opinion' => fake()->randomElement(['Recommended', 'Not Recommended']),
             'text' => fake()->text(85),
             'user_id' => User::all()->random()->id,
             'game_id' => Game::all()->random()->id,

@@ -4,7 +4,6 @@ namespace App\Livewire\Forms;
 
 use App\Models\Game;
 use Illuminate\Support\Facades\Storage;
-use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Stripe\Price;
 use Stripe\Product;
@@ -69,18 +68,18 @@ class FormUpdateGame extends Form
             'active' => false,
         ]);
 
-        Product::update($this->game->stripe_id, [ // Actualizo el producto con nombre y descripción
+        Product::update($this->game->stripe_id, [ // Actualizo el producto
             'name' => $this->name,
             'description' => $this->description,
         ]);
 
-        $newPrice = Price::create([ // Creo el nuevo precio
+        $newPrice = Price::create([ // Creo un nuevo precio
             'unit_amount' => $this->discount ? $this->discount_price * 100 : $this->price * 100, // Stripe usa centavos
             'currency' => 'eur',
             'product' => $this->game->stripe_id,
         ]);
 
-        $this->game->update([ // Actualizo el juego con el nuevo precio
+        $this->game->update([ // Finalmente actualizo el juego con un nuevo stripe_price_id
             'stripe_price_id' => $newPrice->id,
             'price' => $this->discount ? $this->discount_price : $this->price,
         ]);

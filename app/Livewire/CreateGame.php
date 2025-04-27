@@ -10,7 +10,7 @@ use Livewire\WithFileUploads;
 class CreateGame extends Component
 {
     use WithFileUploads;
-    public bool $openModalCrear = false;
+    public bool $openModalCreate = false;
     public FormCreateGame $cForm;
 
     public function render()
@@ -30,6 +30,6 @@ class CreateGame extends Component
     public function close()
     {
         $this->cForm->resetFields();
-        $this->openModalCrear = false;
+        $this->openModalCreate = false;
     }
 }

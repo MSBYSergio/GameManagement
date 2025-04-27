@@ -68,9 +68,9 @@ class ShowShop extends Component
         $this->dispatch('message', "Game deleted correctly");
     }
 
-    private function deleteStripeGame($game)
+    private function deleteStripeGame($game) // Archivo el producto dentro de Stripe
     {
-        // Stripe no deja como tal eliminar un producto, se tiene que desactivar
+
         Stripe::setApiKey(config('cashier.secret'));
         $game = Product::retrieve($game->stripe_id);
         $game->update($game->id, ['active' => false]);

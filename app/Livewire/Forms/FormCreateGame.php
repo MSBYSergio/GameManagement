@@ -10,7 +10,7 @@ use Stripe\Stripe;
 
 class FormCreateGame extends Form
 {
-    // Ten en cuenta que cuando insertas un juego aún no lo ha comprado ningún usuario.
+    // Ten en cuenta que cuando insertas un juego aún no lo ha comprado ningún usuario y no tiene comentarios.
 
     public string $name = '';
     public float $price = 0.00;
@@ -39,7 +39,7 @@ class FormCreateGame extends Form
             'product' => $product->id,
         ]);
 
-        $game = Game::create([ // Creo el juego en Stripe
+        $game = Game::create([ // Creo el juego dentro de la base de datos
             'stripe_id' => $product->id,
             'stripe_price_id' => $price->id,
             'image' => ($this->image) ? $this->image->store('images/games') : "images/games/default.jpg",
@@ -53,12 +53,12 @@ class FormCreateGame extends Form
             'requirements' => $this->requirements,
         ]);
         $game->tags()->attach($this->tags);
-        
     }
 
-    public function resetFields() {
-        $this -> reset();
-        $this -> resetValidation();
+    public function resetFields()
+    {
+        $this->reset();
+        $this->resetValidation();
     }
 
     public function rules()
@@ -75,8 +75,8 @@ class FormCreateGame extends Form
             'tags' => ['required', 'array', 'exists:tags,id'],
         ];
 
-        if ($this->discount) {
-            $rules['discount_price'] = ['required', 'decimal:2', 'lt:price']; // Con el lt hago que sea menor que el precio original
+        if ($this->discount) { // Con lt indico que tiene que ser menor que el precio
+            $rules['discount_price'] = ['required', 'decimal:2', 'lt:price'];
         }
         return $rules;
     }

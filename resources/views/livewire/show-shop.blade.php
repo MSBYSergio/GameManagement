@@ -31,6 +31,8 @@
         <div class="mt-2">
             {{$games -> links()}}
         </div>
+
+        <!-- Modal para actualizar un juego -->
         @if (isset($uForm -> game))
         <x-dialog-modal wire:model="openModalUpdate">
             <x-slot name="title">
@@ -135,8 +137,8 @@
 
             <x-slot name="footer">
                 <div class="flex justify-end space-x-3">
-                    <button type="button" wire:click="close()" wire:loading.attr="disabled" class="inline-flex rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">Cancelar</button>
-                    <button type="button" wire:click="update()" class="inline-flex rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white">Actualizar</button>
+                    <button type="button" wire:click="close()" class="inline-flex rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">Cancelar</button>
+                    <button type="button" wire:click="update()" wire:loading.attr="disabled" class="inline-flex rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white">Actualizar</button>
                 </div>
             </x-slot>
         </x-dialog-modal>
