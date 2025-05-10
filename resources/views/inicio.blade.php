@@ -42,7 +42,6 @@
         <div class="row">
             <div class="col-md-6 m-auto">
                 <h1 class="text-white mb-2">OFERTAS DISPONIBLES</h1>
-                
                 <div class="card-group">
                     @foreach ($ofertas as $item)
                     <div class="card" style="width: 28rem;"> <!-- Para que se mantenga en el mismo ancho -->
@@ -53,7 +52,9 @@
                                 <span class="me-3 text-muted text-decoration-line-through" style="font-size: 1rem;">{{$item->price}}</span>
                                 <span class="text-success fw-bold" style="font-size: 1.2rem;">{{$item->discount_price}}</span>
                             </div>
-                            <button class="btn btn-primary mt-1 text-white">Comprar</button>
+                            @auth
+                            <button class="btn btn-primary mt-1 text-white" wire:click="">Comprar</button>
+                            @endauth
                         </div>
                     </div>
                     @endforeach

@@ -7,13 +7,15 @@
     "require": {
         "php": "^8.2",
         "anayarojo/shoppingcart": "^4.2",
+        "kaishiyoku/laravel-color-validation": "^3.2",
         "laravel/cashier": "^15.6",
         "laravel/framework": "^11.0",
         "laravel/jetstream": "^5.3",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.0",
-        "mmo/faker-images": "^0.9.0"
+        "mmo/faker-images": "^0.9.0",
+        "munafio/chatify": "^1.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

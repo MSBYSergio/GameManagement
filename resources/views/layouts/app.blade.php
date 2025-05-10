@@ -71,11 +71,19 @@
                 }
             });
         });
+    </script>
 
-        Livewire.on('ERROR', (txt) => {
-
+    @if (session('message'))
+    <script>
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "{{session('message')}}",
+            showConfirmButton: false,
+            timer: 1500
         });
     </script>
+    @endif
 
     @if (session('ERROR'))
     <script>

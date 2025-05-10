@@ -3,9 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Game;
-use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Stripe\Checkout\Session;

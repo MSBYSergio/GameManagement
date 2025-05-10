@@ -19,6 +19,14 @@
                 <x-nav-link href="{{route('library')}}" :active="request()->routeIs('library')">
                     Biblioteca
                 </x-nav-link>
+
+                <x-nav-link href="{{route('chatify')}}" :active="request()->routeIs('chatify')">
+                    Chat
+                </x-nav-link>
+
+                <x-nav-link href="{{route('tags.index')}}" :active="request()->routeIs('tags.*')">
+                    Tags
+                </x-nav-link>
             </div>
 
             <div class="hidden sm:flex sm:items-center m-auto sm:ms-6">
@@ -116,6 +124,9 @@
             <x-responsive-nav-link href="{{ route('library') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Biblioteca') }}
             </x-responsive-nav-link>
+            <x-nav-link href="{{route('chatify')}}" :active="request()->routeIs('chatify')">
+                {{ __('Chat') }}
+            </x-nav-link>
         </div>
         @auth
         <!-- Responsive Settings Options -->

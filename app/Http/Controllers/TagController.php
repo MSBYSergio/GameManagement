@@ -12,7 +12,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+        return view('tags.index', compact('tags'));
     }
 
     /**
@@ -20,7 +21,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('tags.create');
     }
 
     /**
@@ -28,7 +29,9 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->rules());
+        Tag::create($request->all());
+        return redirect()->route('tags.index')->with('message', "Tag created correctly");
     }
 
     /**
@@ -44,7 +47,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('tags.edit', compact('tag'));
     }
 
     /**
@@ -52,7 +55,9 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $request->validate($this->rules($tag->id));
+        $tag->update($request->all());
+        return redirect()->route('tags.index')->with('message', "Tag updated correctly");
     }
 
     /**
@@ -60,6 +65,15 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return redirect()->route('tags.index')->with('message', "Tag removed correctly");
+    }
+
+    public function rules(?int $id = null)
+    {
+        return [
+            'name' => ['required', 'string', 'min:3', 'max:15', 'unique:tags,name,' . $id],
+            'color' => ['required', 'color_hex'],
+        ];
     }
 }

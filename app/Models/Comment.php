@@ -23,11 +23,11 @@ class Comment extends Model
 
     public function recibeLikes(): BelongsToMany
     {
-        return $this->belongsToMany(User::class,'comments_likes','user_id','comment_id'); // Un comentario recibe likes de muchos usuarios
+        return $this->belongsToMany(User::class,'comments_likes','comment_id','user_id'); // Un comentario recibe likes de muchos usuarios
     }
 
     public function recibeDisLikes(): BelongsToMany
     {
-        return $this->belongsToMany(User::class,'comments_dislikes','user_id','comment_id'); // Un comentario recibe dislikes de muchos usuarios
+        return $this->belongsToMany(User::class,'comments_dislikes','comment_id','user_id'); // Un comentario recibe dislikes de muchos usuarios
     }
 }

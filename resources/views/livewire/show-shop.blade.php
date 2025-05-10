@@ -1,27 +1,35 @@
 <div>
     <!-- Contenido principal de la tienda -->
     <div style="background-color: #1e3a8a; min-height: 100vh; padding: 1.5rem; color: white; font-family: Arial, sans-serif;">
+        <input type="search" class="rounded p-2 text-black bg-white border-none" wire:model.live="search" />
         @livewire('create-game')
         <!-- Cuadrícula de productos -->
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            @foreach ($games as $item)
+            @foreach ($games as $game)
             <div class="col w-25">
                 <div class="card h-100">
-                    <img src="{{Storage::url($item -> image)}}" class="img-fluid" alt="{{basename($item -> image)}}">
+                    <img src="{{Storage::url($game -> image)}}" class="img-fluid" alt="{{basename($game -> image)}}">
                     <div class="card-body">
-                        <h5 class="card-title text-center">{{$item -> name}}</h5>
+                        <h5 class="card-title text-center">{{$game -> name}}</h5>
+
+                        <a href="{{route('game-details.show', $game -> id)}}">
+                            <i class="fa-solid fa-circle-info text-blue-500 hover:text-2xl"></i>
+                        </a>
+
                         @if (Auth::user() -> is_admin)
-                        <button wire:click="openUpdate({{$item -> id}})">
+
+                        <button wire:click="openUpdate({{$game -> id}})">
                             <i class="fa-solid fa-pen-to-square text-green-500 hover:text-2xl"></i>
                         </button>
-                        <button wire:click="openDelete({{$item -> id}})">
+
+                        <button wire:click="openDelete({{$game -> id}})">
                             <i class="fa-solid fa-trash text-red-500 hover:text-2xl"></i>
                         </button>
                         @endif
                     </div>
                     <div class="card-footer">
                         <small class="text-white fw-bold">
-                            <button class="w-full bg-success rounded p-3" wire:click="storeGame({{$item -> id}})">Añadir al carrito</button>
+                            <button class="w-full bg-success rounded p-3" wire:click="storeGame({{$game -> id}})">Añadir al carrito</button>
                         </small>
                     </div>
                 </div>

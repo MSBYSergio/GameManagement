@@ -22,13 +22,20 @@ class ShowShop extends Component
     use WithFileUploads;
     public FormUpdateGame $uForm;
     public bool $openModalUpdate = false;
+    public string $search = '';
 
     #[On('insertGame')]
     public function render()
     {
-        $games = Game::select('*')->paginate(4);
+        $games = Game::select('*')->where(function ($q) {
+            $q->where('name', 'like', "%{$this->search}%");
+        })-> paginate(4);
         $tags = Tag::all();
         return view('livewire.show-shop', compact('games', 'tags'));
+    }
+
+    public function updatingSearch() {
+        $this -> resetPage();
     }
 
     // Métodos para insertar un juego

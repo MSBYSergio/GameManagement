@@ -21,28 +21,31 @@ class ShowUserLibrary extends Component
         $library = Game::with('tags')->select('games.*')
             ->join('game_user', 'game_user.game_id', '=', 'games.id')
             ->where('game_user.user_id', '=', Auth::id())->paginate(6);
+            
         return view('livewire.show-user-library', compact('library'));
     }
 
     public function openCommentModal(int $id)
     {
+
+        if ($this->isCommentRepeated($id)) {
+            return redirect('/library')->with('ERROR', "You can´t comment again");
+        }
         $this->isOpen = true;
         $this->gameId = $id;
     }
 
     public function storeComment()
     {
-        if ($this->isCommentRepeated()) {
-            return redirect('/')->with('ERROR', "You can´t comment again");
-        }
+
         $this->fComment->formStoreComment($this->gameId);
         $this->dispatch('message', "Comentary saved");
         $this->close();
     }
 
-    private function isCommentRepeated()
+    private function isCommentRepeated(int $id)
     {
-        return User::findOrFail(Auth::id())->comments()->where('game_id', $this->gameId)->exists();
+        return User::findOrFail(Auth::id())->comments()->where('game_id', $id)->exists();
     }
 
     public function close()
