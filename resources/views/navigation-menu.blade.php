@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-[#031425]">
+<nav x-data="{ open: false }" class="bg-[#121212]">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex h-24">
@@ -13,19 +13,19 @@
             <!-- Navigation Links -->
             <div class="space-x-8 hidden sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link href="{{route('shop')}}" :active="request()->routeIs('shop')">
-                    Tienda
+                    <i class="fa-solid fa-bag-shopping mr-2"></i>Tienda
                 </x-nav-link>
 
                 <x-nav-link href="{{route('library')}}" :active="request()->routeIs('library')">
-                    Biblioteca
+                    <i class="fa-solid fa-gamepad mr-2"></i>Biblioteca
                 </x-nav-link>
 
                 <x-nav-link href="{{route('chatify')}}" :active="request()->routeIs('chatify')">
-                    Chat
+                    <i class="fa-solid fa-user mr-2"></i>Chat
                 </x-nav-link>
 
                 <x-nav-link href="{{route('tags.index')}}" :active="request()->routeIs('tags.*')">
-                    Tags
+                    <i class="fa-solid fa-tags mr-2"></i>Tags
                 </x-nav-link>
             </div>
 

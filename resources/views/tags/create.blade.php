@@ -24,7 +24,6 @@
                         class="flex-1 bg-indigo-500 text-white font-semibold py-2 rounded-xl hover:bg-indigo-600 transition text-sm mr-3">
                         Editar
                     </button>
-
                     <a href="{{route('tags.index')}}"
                         class="flex-1 bg-red-600 text-white font-semibold py-2 rounded-xl text-center hover:bg-red-700 transition text-sm flex items-center justify-center">
                         <i class="fas fa-times mr-2"></i> Cancelar

@@ -21,7 +21,7 @@ class GameFactory extends Factory
         $is_discount = fake()->boolean(65);
         $percent = random_int(10, 70);
         return [
-            'image' => "images/games/" . fake()->picsum('public/storage/images/games/', 400, 400, false),
+            'image' => "images/games/" . fake()->picsum('public/storage/images/games/', 1280, 720, false),
             'name' => fake()->unique()->sentence(3, true),
             'price' => $price,
             'description' => fake()->paragraph(5, false),

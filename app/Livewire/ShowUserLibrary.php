@@ -43,7 +43,7 @@ class ShowUserLibrary extends Component
         $this->close();
     }
 
-    private function isCommentRepeated(int $id)
+    public function isCommentRepeated(int $id)
     {
         return User::findOrFail(Auth::id())->comments()->where('game_id', $id)->exists();
     }

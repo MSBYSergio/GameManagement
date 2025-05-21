@@ -23,9 +23,9 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans">
     <x-banner />
-    <div class="min-h-screen bg-[#093c6e]">
+    <div class="bg-[#0A1128]">
         @livewire('navigation-menu')
         <!-- Page Heading -->
         @if (isset($header))
@@ -37,9 +37,11 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main style="min-height: 70vh;">
             {{ $slot }}
         </main>
+        
+        @include('footer')
     </div>
 
     @stack('modals')

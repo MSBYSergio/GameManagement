@@ -1,7 +1,7 @@
 <div>
-    <div class="d-flex justify-content-end">
-        <x-button class="mb-2" wire:click="$set('openModalCreate',true)"><i class="fa-solid fa-plus me-2"></i>Insertar</x-button>
-    </div>
+    <x-button class="ms-2" wire:click="$set('openModalCreate',true)">
+        <i class="fa-solid fa-plus p-1"></i>Insertar
+    </x-button>
 
     <!-- Modal para crear un juego -->
     <x-dialog-modal wire:model="openModalCreate">
@@ -11,36 +11,28 @@
 
         <x-slot name="content">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Columna izquierda -->
                 <div class="space-y-3">
-                    <!-- Nombre del juego -->
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
                         <input type="text" id="name" wire:model="cForm.name" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                         <x-input-error for="cForm.name" />
                     </div>
-                    <!-- Desarrollador -->
                     <div>
                         <label for="developer" class="block text-sm font-medium text-gray-700">Desarrollador</label>
                         <input type="text" id="developer" wire:model="cForm.developer" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                         <x-input-error for="cForm.developer" />
                     </div>
-
-                    <!-- Fecha de lanzamiento -->
                     <div>
                         <label for="release_date" class="block text-sm font-medium text-gray-700">Fecha de lanzamiento</label>
                         <input type="date" id="release_date" wire:model="cForm.release_date" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                         <x-input-error for="cForm.release_date" />
                     </div>
-
-                    <!-- Precio -->
                     <div>
                         <label for="price" class="block text-sm font-medium text-gray-700">Precio (€)</label>
                         <input type="number" wire:model="cForm.price" step="1" id="price" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                         <x-input-error for="cForm.price" />
                     </div>
 
-                    <!-- Descuento -->
                     <div x-data="{ hasDiscount: false }">
                         <label class="flex items-center">
                             <input type="checkbox" wire:model="cForm.discount" x-model="hasDiscount" class="rounded border-gray-300 text-indigo-600">
@@ -57,28 +49,28 @@
                 </div>
 
                 <div class="space-y-3">
-                    <!-- Descripción -->
+                    
                     <div>
                         <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
                         <textarea wire:model="cForm.description" id="description" rows="2" class="w-full rounded-md border-gray-300 shadow-sm"></textarea>
                         <x-input-error for="cForm.description" />
                     </div>
 
-                    <!-- Requisitos -->
+                    
                     <div>
                         <label for="requirements" class="block text-sm font-medium text-gray-700">Requisitos</label>
                         <textarea wire:model="cForm.requirements" id="requirements" rows="2" class="w-full rounded-md border-gray-300 shadow-sm"></textarea>
                         <x-input-error for="cForm.requirements" />
                     </div>
 
-                    <!-- Imagen -->
+                    
                     <div>
                         <label for="image" class="block text-sm font-medium text-gray-700">Imagen</label>
                         <input wire:model="cForm.image" type="file" id="image" class="w-full text-sm text-gray-500 file:mr-4 file:py-1 file:px-3 file:rounded-md file:text-sm file:bg-indigo-50">
                         <x-input-error for="cForm.image" />
                     </div>
 
-                    <!-- Tags -->
+                    
                     <div>
                         <span class="block text-sm font-medium text-gray-700 mb-1">Tags</span>
                         <div class="grid grid-cols-2 gap-1">

@@ -29,30 +29,48 @@ class ShowShop extends Component
     {
         $games = Game::select('*')->where(function ($q) {
             $q->where('name', 'like', "%{$this->search}%");
-        })-> paginate(4);
+        })->paginate(8);
         $tags = Tag::all();
         return view('livewire.show-shop', compact('games', 'tags'));
     }
 
-    public function updatingSearch() {
-        $this -> resetPage();
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     // Métodos para insertar un juego
 
     public function storeGame(int $id)
     {
+        $cart = Cart::instance(Auth::id());
         $game = Game::findOrFail($id);
+
         if ($this->hasGame($game)) {
-            return redirect('/')->with('ERROR', "No puedes añadir un juego que ya tienes");
+            return redirect('/shop')->with('ERROR', "You already have this game");
         }
+
+        if ($this -> isGameInCart($game)) {
+            return redirect('/shop')->with('ERROR', "The game is already in the cart");
+        }
+        
         $price = $game->discount ? $game->discount_price : $game->price;
-        Cart::instance(Auth::id())->add(['id' => $game->id, 'name' => $game->name, 'qty' => 1, 'price' => $price, 'weight' => -1]);
+        $cart->add(['id' => $game->id, 'name' => $game->name, 'qty' => 1, 'price' => $price, 'weight' => -1]) 
+        -> associate(Game::class);
+        $this->dispatch('message', "Game added to the cart");
     }
 
-    private function hasGame($game)
+    public function hasGame(Game $game)
     {
         return User::findOrFail(Auth::id())->games()->where('games.id', $game->id)->exists();
+    }
+
+    public function isGameInCart(Game $game)
+    {
+        $ocurrences = Cart::instance(Auth::id())->search(function ($cartItem) use ($game) {
+            return ($cartItem->id === $game->id);
+        });
+        return $ocurrences->isNotEmpty();
     }
 
     // Métodos para eliminar un juego
