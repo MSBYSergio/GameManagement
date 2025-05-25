@@ -1,8 +1,11 @@
 <x-app-layout>
-    <section>
-        <!-- Inicio Carrousel -->
-        <div class="row">
-            <div class="col-md-8 m-auto" style="width: 650px;">
+    <section class="pb-3" style="background-image: url({{Storage::url('images/camo-black.png')}});">
+        <div class="row align-items-center">
+            <div class="col-md-2 text-center">
+                <img src="{{Storage::url('images/graffiti-1.webp')}}" alt="" class="img-fluid d-none d-md-block">
+            </div>
+            <!-- Inicio Carrousel -->
+            <div class="col-md-8 m-auto" style="width: 750px;">
                 <h1 class="text-white mt-3 ms-3 fw-bold mb-2">DESTACADOS Y RECOMENDADOS</h1>
                 <div class="container">
                     <div id="carousel" class="carousel slide carousel-fade shadow-lg rounded overflow-hidden" data-bs-ride="carousel" data-bs-interval="5000" data-bs-touch="true">
@@ -43,32 +46,38 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-2 text-center">
+                <img src="{{Storage::url('images/graffiti-7.webp')}}" alt="" class="img-fluid d-none d-md-block">
+            </div>
         </div>
-
-        <!-- Fin Carrousel -->
-
+        
         <!-- Inicio CARDS -->
-        <div class="row mt-3">
-            <div class="col-md-6 m-auto">
-                <h1 class="fw-bold text-white mb-2">OFERTAS DISPONIBLES</h1>
-                <div class="card-group">
-                    @foreach ($ofertas as $item)
-                    <div class="card" style="width: 28rem;"> <!-- Para que se mantenga en el mismo ancho -->
-                        <img src="{{Storage::url($item -> image)}}" style="height: 330px;" class="card-img-top" alt="{{basename($item -> image)}}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$item -> name}}</h5>
+        <div class="container mt-3">
+            <h1 class="fw-bold text-white mb-2">MEJORES OFERTAS</h1>
+            <div class="row g-4">
+                @foreach ($ofertas as $item)
+                <div class="col-md-4"> <!-- 3 columnas por fila en md o superior -->
+                    <div class="card h-100 border-0 hover:shadow-lg hover:border-2 hover:border-blue-500 hover:ring-2 hover:ring-blue-400">
+                        <div class="position-relative">
+                            <img src="{{ Storage::url($item->image) }}" alt="{{ basename($item->image) }}"
+                                class="w-100 h-100 object-cover rounded-top" />
+                        </div>
+                        <div class="card-body d-flex flex-column align-items-center text-center bg-dark">
+                            <h5 class="card-title fw-bold text-white text-xl w-100" title="{{ $item->name }}">
+                                {{ $item->name }}
+                            </h5>
                             <div>
-                                <span class="me-3 text-muted text-decoration-line-through" style="font-size: 1rem;">{{$item->price}}</span>
-                                <span class="text-success fw-bold" style="font-size: 1.2rem;">{{$item->discount_price}}</span>
+                                <span class="me-3 text-white text-decoration-line-through" style="font-size: 1rem;">{{ $item->price }}€</span>
+                                <span class="text-success fw-bold" style="font-size: 1.2rem;">{{ $item->discount_price }}€</span>
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
-        <!-- FIN Cards -->
 
+        <!-- FIN Cards -->
         <!-- Chipp Chat Widget -->
         <script>
             window.CHIPP_APP_URL = "https://asistentedejuegos-65872.chipp.ai";

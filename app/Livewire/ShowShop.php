@@ -47,17 +47,17 @@ class ShowShop extends Component
         $game = Game::findOrFail($id);
 
         if ($this->hasGame($game)) {
-            return redirect('/shop')->with('ERROR', "You already have this game");
+            return redirect('/shop')->with('ERROR', "Este juego ya ha sido comprado");
         }
 
         if ($this -> isGameInCart($game)) {
-            return redirect('/shop')->with('ERROR', "The game is already in the cart");
+            return redirect('/shop')->with('ERROR', "Este juego ya está en el carrito");
         }
         
         $price = $game->discount ? $game->discount_price : $game->price;
         $cart->add(['id' => $game->id, 'name' => $game->name, 'qty' => 1, 'price' => $price, 'weight' => -1]) 
         -> associate(Game::class);
-        $this->dispatch('message', "Game added to the cart");
+        $this->dispatch('message', "Este juego se ha añadido al carrito");
     }
 
     public function hasGame(Game $game)

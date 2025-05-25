@@ -1,6 +1,6 @@
 <x-action-section>
     <x-slot name="title">
-        {{ __('Browser Sessions') }}
+        <span class="text-white">Sesiones en el navegador</span>
     </x-slot>
 
     <x-slot name="description">

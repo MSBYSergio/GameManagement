@@ -1,6 +1,6 @@
 <x-action-section>
     <x-slot name="title">
-        {{ __('Delete Account') }}
+        <span class="text-white">Eliminar cuenta</span>
     </x-slot>
 
     <x-slot name="description">

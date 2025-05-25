@@ -1,5 +1,5 @@
-<x-app-layout>
-    <div class="max-w-3xl mx-auto mt-3 bg-white rounded-xl shadow p-6">
+<x-app-layout style="min-height: 70vh;">
+    <div class="max-w-4xl mx-auto mt-3 bg-white rounded-xl shadow p-6">
         <div class="flex justify-end">
             <a href="{{route('tags.create')}}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition mb-2">
                 Insertar
@@ -19,7 +19,7 @@
                     <td class="px-4 py-2 border-b">{{$item -> name}}</td>
                     <td class="px-4 py-2 border-b">
                         <span class="inline-block w-4 h-4 rounded-full" style="background-color: {{$item -> color}};"></span>
-                    </td>
+                    </td>   
                     <td class="px-4 py-2 border-b text-center space-x-3">
                         <form action="{{route('tags.destroy', $item -> id)}}" method="POST">
                             @csrf

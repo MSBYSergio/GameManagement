@@ -29,7 +29,7 @@ class ShowUserLibrary extends Component
     {
 
         if ($this->isCommentRepeated($id)) {
-            return redirect('/library')->with('ERROR', "You can´t comment again");
+            return redirect('/library')->with('ERROR', "No puedes comentar de nuevo");
         }
         $this->isOpen = true;
         $this->gameId = $id;
@@ -39,7 +39,7 @@ class ShowUserLibrary extends Component
     {
 
         $this->fComment->formStoreComment($this->gameId);
-        $this->dispatch('message', "Comentary saved");
+        $this->dispatch('message', "Comentario guardado correctamente");
         $this->close();
     }
 

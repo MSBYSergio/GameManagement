@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="bg-[#093c6e] rounded flex items-start justify-center p-6">
-        <div class="bg-white w-1/2 rounded-2xl shadow-xl p-5 w-full max-w-xs mt-20">
-            <h2 class="text-lg font-bold text-gray-800 mb-4 text-center">Crear Etiqueta</h2>
+    <div class="rounded flex items-start justify-center p-6 w-1/2 mx-auto">
+        <div class="bg-white rounded-2xl shadow-xl p-5 w-full mt-20">
+            <h2 class="text-lg font-bold text-gray-800 mb-4 text-center">Crear nueva etiqueta</h2>
             <form class="space-y-3" action="{{route('tags.store')}}" method="post">
                 @csrf
                 <div>
@@ -22,7 +22,7 @@
                 <div class="flex justify-between gap-x-3">
                     <button type="submit"
                         class="flex-1 bg-indigo-500 text-white font-semibold py-2 rounded-xl hover:bg-indigo-600 transition text-sm mr-3">
-                        Editar
+                        Crear
                     </button>
                     <a href="{{route('tags.index')}}"
                         class="flex-1 bg-red-600 text-white font-semibold py-2 rounded-xl text-center hover:bg-red-700 transition text-sm flex items-center justify-center">

@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="bg-[#093c6e] rounded flex items-start justify-center p-6">
-        <div class="bg-white w-1/2 rounded-2xl shadow-xl p-5 w-full max-w-xs mt-20">
+    <div class="rounded flex items-start justify-center w-1/2 p-6 mx-auto">
+        <div class="bg-white w-1/2 rounded-2xl shadow-xl p-5 w-full mt-20">
             <h2 class="text-lg font-bold text-gray-800 mb-4 text-center">Editar Etiqueta</h2>
             <form class="space-y-3" action="{{route('tags.update', $tag -> id)}}" method="post">
                 @csrf

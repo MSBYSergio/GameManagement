@@ -60,13 +60,13 @@
 
         Livewire.on('confirmDelete', (id) => {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: "Estás seguro?",
+                text: "Esto es permanente!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
+                confirmButtonText: "Si, elimínalo!"
             }).then((result) => {
                 if (result.isConfirmed) {
                     Livewire.dispatchTo('show-shop', 'delete', id);

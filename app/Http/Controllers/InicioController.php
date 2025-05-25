@@ -15,7 +15,7 @@ class InicioController extends Controller
             ->groupBy('games.id', 'games.image', 'games.name', 'games.description')
             ->orderBy('likes', 'desc')->take(3)->get();
         
-        $ofertas = Game::select('image', 'name', 'price', 'discount_price')
+        $ofertas = Game::select('image', 'name', 'discount', 'price',  'discount_price')
             ->where('discount_price', '>', 0)
             ->orderBy('name')->take(3)->get();
             

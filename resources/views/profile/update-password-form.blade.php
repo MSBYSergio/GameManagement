@@ -1,6 +1,6 @@
 <x-form-section submit="updatePassword">
     <x-slot name="title">
-        {{ __('Update Password') }}
+        <span class="text-white">Cambiar contraseña</span>
     </x-slot>
 
     <x-slot name="description">
