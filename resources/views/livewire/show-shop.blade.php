@@ -221,9 +221,9 @@
                     <label for="image" class="block text-sm font-medium text-gray-700">Imagen</label>
                     <div class="mt-1 mb-2">
                         @if ($uForm->image)
-                        <img src="{{ $uForm->image->temporaryUrl() }}" class="h-32 w-auto object-contain rounded" alt="Vista previa">
+                        <img src="{{$uForm->image->temporaryUrl()}}" class="h-32 w-auto object-contain rounded" alt="Vista previa">
                         @else
-                        <img src="{{ Storage::url($uForm->game->image) }}" class="h-32 w-auto object-contain rounded" alt="Imagen actual">
+                        <img src="{{Storage::url($uForm->game->image)}}" class="h-32 w-auto object-contain rounded" alt="Imagen actual">
                         @endif
                     </div>
                     <input wire:model="uForm.image" type="file" id="image" class="w-full text-sm text-gray-500 file:mr-4 file:py-1 file:px-3 file:rounded-md file:text-sm file:bg-indigo-50">

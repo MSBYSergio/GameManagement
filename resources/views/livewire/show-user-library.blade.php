@@ -1,5 +1,6 @@
 <div>
     <x-self.base>
+        @if (count($library))
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
             @foreach ($library as $item)
             <div class="col">
@@ -10,7 +11,6 @@
                         </div>
                     </div>
 
-                    
                     <div class="card-body bg-gray-800 text-white d-flex flex-column justify-between space-y-2 p-4">
                         <h1 class="h4 text-center">{{$item -> name}}</h1>
                         <p class="fst-italic text-gray-300">{{ $item->description }}</p>
@@ -42,12 +42,11 @@
                         </button>
                         @endif
                     </div>
-
                 </div>
             </div>
             @endforeach
         </div>
-
+        <!-- Modal para crear comentario -->
         <x-dialog-modal wire:model="isOpen">
             <x-slot name="title">
                 Comentar
@@ -84,9 +83,22 @@
                 <button class="btn btn-danger" wire:click="close()">Cancelar</button>
             </x-slot>
         </x-dialog-modal>
+        <!-- Fin modal para crear comentario -->
 
         <div class="mt-2">
             {{ $library->links() }}
         </div>
+        @else
+        <div class="w-11/12 md:w-2/3 lg:w-1/2 mx-auto rounded-lg bg-gray-800 flex items-center justify-center py-10 px-6 shadow-xl">
+            <div class="relative w-full max-w-xl bg-gray-900 rounded-lg flex flex-col items-center text-center py-16 px-6 shadow-lg">
+                <div class="absolute -top-12 w-24 h-24 bg-green-100 rounded-full flex items-center justify-center shadow">
+                    <i class="fa-solid fa-gamepad text-4xl text-green-600"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-white mb-4 mt-14">¡NO HAS COMPRADO NINGÚN JUEGO!</h1>
+                <p class="text-gray-300 mb-3">¿Aún no te has decidido? Tenemos juegos que te van a encantar.</p>
+                <p class="text-gray-400 mb-6">Explora el menú superior o visita la tienda para descubrirlos</p>
+            </div>
+        </div>
+        @endif
     </x-self.base>
 </div>

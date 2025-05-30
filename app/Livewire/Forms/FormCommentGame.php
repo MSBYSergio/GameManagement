@@ -16,7 +16,6 @@ class FormCommentGame extends Form
 
     public function formStoreComment(int $id)
     {
-        
         $this->validate();
         Comment::create([
             'user_opinion' => $this->user_opinion,

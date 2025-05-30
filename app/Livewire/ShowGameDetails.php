@@ -20,12 +20,12 @@ class ShowGameDetails extends Component // Componente Livewire para mostrar todo
     {
         $this->game = Game::with('comments', 'comments.recibeLikes', 'comments.recibeDisLikes')->findOrFail($id);
     }
-
+    
     public function giveLike(int $id)
     {
         $comment = Comment::findOrFail($id);
-        // Si el usuario ha dado like se lo quito
-        if ($comment->recibeLikes()->where('user_id', Auth::id())->exists()) { // Si  el usuario ha dado like 
+        // Si  el usuario ha dado like se lo quito
+        if ($comment->recibeLikes()->where('user_id', Auth::id())->exists()) {
             $comment->recibeLikes()->detach(Auth::id());
         } else {
             // Si no ha dado like elimino el dislike (si lo tuviera) y le pongo el like

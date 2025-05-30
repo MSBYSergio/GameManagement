@@ -6,7 +6,7 @@
             <div class="shrink-0 flex items-center">
                 <a href="{{ route('index') }}">
                     <img src="{{Storage::url('images/circle.png')}}" width="40" height="40" alt="Logo">
-                    <a class="text-white fw-bold ms-3"> Descubrimiento </a>
+                    <a class="text-white fw-bold ms-3"> GameZone </a>
                 </a>
             </div>
 
@@ -27,6 +27,11 @@
                 <x-nav-link href="{{route('tags.index')}}" :active="request()->routeIs('tags.*')">
                     <i class="fa-solid fa-tags mr-2"></i>Tags
                 </x-nav-link>
+
+                <x-nav-link href="{{route('contact')}}" :active="request()->routeIs('contact')">
+                    <i class="fa-solid fa-id-card-clip mr-2"></i>Contacto
+                </x-nav-link>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center m-auto sm:ms-6">

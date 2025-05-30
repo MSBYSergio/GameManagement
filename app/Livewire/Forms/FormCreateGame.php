@@ -68,7 +68,7 @@ class FormCreateGame extends Form
             'price' => ['required', 'decimal:2', 'between:1,100'],
             'discount' => ['required', 'boolean'],
             'description' => ['required', 'string', 'min:10', 'max:100'],
-            'release_date' => ['required', 'date', 'after_or_equal:today'],
+            'release_date' => ['required', 'date'],
             'developer' => ['required', 'string', 'min:1', 'max:15'],
             'requirements' => ['required', 'string', 'min:10', 'max:350'],
             'image' => ['nullable', 'image', 'max:2048'],

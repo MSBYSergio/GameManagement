@@ -55,7 +55,7 @@ class FormUpdateGame extends Form
         ]);
         $this->game->tags()->sync($this->tags);
 
-        if ($this->image && $oldImage != "default.jpg") {
+        if ($this->image && basename($oldImage) != "default.jpg") {
             Storage::delete($oldImage);
         }
     }

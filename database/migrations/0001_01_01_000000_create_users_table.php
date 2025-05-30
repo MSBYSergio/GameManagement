@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
+            $table->string('image'); // He tenido que ejecutar una consulta para ponerle una imagen default
             $table->string('name');
             $table->enum('country', ['Spain', 'France', 'Belgium', 'Argentina', 'Germany', 'Morocco', 'Mexico'])->nullable();
             $table->boolean('is_admin')->default(false);

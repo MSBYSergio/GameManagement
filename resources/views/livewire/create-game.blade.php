@@ -49,28 +49,33 @@
                 </div>
 
                 <div class="space-y-3">
-                    
+
                     <div>
                         <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
                         <textarea wire:model="cForm.description" id="description" rows="2" class="w-full rounded-md border-gray-300 shadow-sm"></textarea>
                         <x-input-error for="cForm.description" />
                     </div>
 
-                    
+
                     <div>
                         <label for="requirements" class="block text-sm font-medium text-gray-700">Requisitos</label>
                         <textarea wire:model="cForm.requirements" id="requirements" rows="2" class="w-full rounded-md border-gray-300 shadow-sm"></textarea>
                         <x-input-error for="cForm.requirements" />
                     </div>
 
-                    
+
                     <div>
                         <label for="image" class="block text-sm font-medium text-gray-700">Imagen</label>
+                        @if ($cForm -> image)
+                        <img src="{{$cForm -> image -> temporaryUrl()}}" class="h-32 w-auto object-contain rounded mb-2" alt="">
+                        @else
+                        <img src="{{Storage::url('images/games/default.jpg')}}" class="h-32 w-auto object-contain rounded mb-2" alt="">
+                        @endif
                         <input wire:model="cForm.image" type="file" id="image" class="w-full text-sm text-gray-500 file:mr-4 file:py-1 file:px-3 file:rounded-md file:text-sm file:bg-indigo-50">
                         <x-input-error for="cForm.image" />
                     </div>
 
-                    
+
                     <div>
                         <span class="block text-sm font-medium text-gray-700 mb-1">Tags</span>
                         <div class="grid grid-cols-2 gap-1">

@@ -114,7 +114,7 @@ class ShowShop extends Component
     {
         $this->uForm->formUpdate();
         $this->close();
-        $this->dispatch('message', "Game updated correctly");
+        $this->dispatch('message', "Juego editado correctamente");
     }
 
     public function clearFields()

@@ -65,11 +65,13 @@
                 </div>
                 <p class="text-gray-300">{{ $comment->text }}</p>
                 <div class="flex gap-3">
-                    <button wire:click="giveLike({{ $comment->id }})" class="text-blue-400 hover:ring-2 hover:ring-blue-400 rounded px-3 py-1 flex items-center gap-1">
+                    <button wire:click="giveLike({{ $comment->id }})"
+                        class="text-blue-400 hover:ring-2 hover:ring-blue-400 rounded px-3 py-1 flex items-center gap-1">
                         <i class="fa-solid fa-thumbs-up"></i>
                         <span>{{ $comment->recibeLikes->count() }}</span>
                     </button>
-                    <button wire:click="giveDisLike({{ $comment->id }})" class="text-red-400 hover:ring-2 hover:ring-red-400 rounded px-3 py-1 flex items-center gap-1">
+                    <button wire:click="giveDisLike({{ $comment->id }})"
+                        class="text-red-400 hover:ring-2 hover:ring-red-400 rounded px-3 py-1 flex items-center gap-1">
                         <i class="fa-solid fa-thumbs-down"></i>
                         <span>{{ $comment->recibeDisLikes->count() }}</span>
                     </button>
@@ -95,4 +97,7 @@
             @endif
         </div>
     </div>
+
+   
+
 </div>

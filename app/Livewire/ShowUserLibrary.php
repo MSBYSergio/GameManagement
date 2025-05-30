@@ -21,7 +21,7 @@ class ShowUserLibrary extends Component
         $library = Game::with('tags')->select('games.*')
             ->join('game_user', 'game_user.game_id', '=', 'games.id')
             ->where('game_user.user_id', '=', Auth::id())->paginate(6);
-            
+
         return view('livewire.show-user-library', compact('library'));
     }
 
