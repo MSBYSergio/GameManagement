@@ -1,8 +1,8 @@
 <footer class="text-center text-white bg-dark" style="height: 22vh;">
     <section class="text-center p-2">
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/?locale=es_ES" target="_blank" role="button"><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://x.com/?lang=es" role="button"><i class="fab fa-twitter"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/  " role="button"><i class="fab fa-instagram"></i></a>
     </section>
     <div class="py-3 px-4 d-flex justify-content-center gap-5 align-items-center text-center" style="background-color: rgba(0, 0, 0, 0.2);">
         <div class="text-white fw-bold me-5">

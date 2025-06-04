@@ -1,8 +1,9 @@
 <div class="m-3">
     <!-- Contenido principal de la tienda -->
-    <div class="container-fluid mt-3">
+    <div class="container-fluid mt-3" role="main" aria-label="Sección principal de la tienda">
         <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-3 gap-2">
-            <input type="search" placeholder="Buscar" class="rounded p-2 text-black bg-white border-none col-4" wire:model.live="search" />
+            <input type="search" placeholder="Buscar" aria-label="Buscar juegos" 
+                class="rounded p-2 text-black bg-white border-none col-4" wire:model.live="search" />
             @if (Auth::user()->is_admin)
             @livewire('create-game')
             @endif
@@ -13,11 +14,12 @@
         <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-4 g-4">
             @foreach ($games as $game)
             <div class="col">
-                <a href="{{route('game-details.show', $game -> id)}}">
+                <a href="{{ route('game-details.show', $game->id) }}" aria-label="Ver detalles de {{ $game->name }}">
                     <div class="card h-100 border-0 hover:shadow-lg hover:border-2 hover:border-blue-500 hover:ring-2 hover:ring-blue-400">
                         <div class="relative">
-                            <img src="{{Storage::url($game->image)}}" alt="{{basename($game->image)}}"
-                                class="w-100 h-100 object-cover rounded-top hover:opacity-90" />
+                            <img src="{{ Storage::url($game->image) }}" 
+                                 alt="Portada del juego {{ $game->name }}"
+                                 class="w-100 h-100 object-cover rounded-top hover:opacity-90" />
                         </div>
 
                         <div class="card-body d-flex flex-column align-items-center text-center space-y-4 p-4 bg-gray-800">
@@ -36,10 +38,10 @@
 
                 <div class="d-flex justify-content-center gap-3 mt-2">
                     @if (Auth::user()->is_admin)
-                    <button wire:click="openUpdate({{ $game->id }})" title="Editar juego">
+                    <button wire:click="openUpdate({{ $game->id }})" title="Editar {{ $game->name }}" aria-label="Editar {{ $game->name }}">
                         <i class="fa-solid fa-pen-to-square text-green-400 hover:text-green-500 transition transform hover:scale-125"></i>
                     </button>
-                    <button wire:click="openDelete({{ $game->id }})" title="Eliminar juego">
+                    <button wire:click="openDelete({{ $game->id }})" title="Eliminar {{ $game->name }}" aria-label="Eliminar {{ $game->name }}">
                         <i class="fa-solid fa-trash text-red-400 hover:text-red-500 transition transform hover:scale-125"></i>
                     </button>
                     @endif
@@ -49,10 +51,10 @@
             <div class="card-footer bg-gray-800">
                 <small class="d-block">
                     @if ($this->hasGame($game))
-                    <button type="button" disabled
+                    <button type="button" disabled aria-label="Ya has comprado {{ $game->name }}"
                         class="w-100 rounded-lg p-3 d-flex align-items-center justify-content-center gap-2 bg-gray-100 border border-gray-300 text-gray-600 font-medium cursor-not-allowed">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20"
-                            fill="currentColor">
+                            fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                 clip-rule="evenodd" />
@@ -61,7 +63,7 @@
                     </button>
                     @else
                     <button class="w-100 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-lg p-3 transition transform hover:scale-105"
-                        wire:click="storeGame({{ $game->id }})">
+                        wire:click="storeGame({{ $game->id }})" aria-label="Añadir {{ $game->name }} al carrito">
                         Añadir al carrito
                     </button>
                     @endif
@@ -71,6 +73,7 @@
     </div>
     @endforeach
 </div>
+
 
 @else
 <div class="w-100 mx-auto p-4 p-md-5 bg-gray-800 rounded mt-5" style="max-width: 720px;">

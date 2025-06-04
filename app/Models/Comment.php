@@ -14,7 +14,7 @@ class Comment extends Model
 
     protected $fillable = ['user_opinion', 'text', 'user_id', 'game_id'];
 
-    // Relaciones
+    // Relaciones del modelo Comment
 
     public function user(): BelongsTo
     {

@@ -90,7 +90,7 @@ class ShowShop extends Component
             Storage::delete($image);
         }
         $game->delete();
-        $this->dispatch('message', "Game deleted correctly");
+        $this->dispatch('message', "Juego eliminado correctamente");
     }
 
     private function deleteStripeGame($game) // Archivo el producto dentro de Stripe

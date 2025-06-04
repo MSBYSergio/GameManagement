@@ -15,7 +15,7 @@ class Game extends Model
 
     protected $fillable = ['stripe_id', 'stripe_price_id', 'image', 'price', 'name', 'discount', 'discount_price', 'description', 'release_date', 'developer', 'requirements'];
 
-    // Relaciones
+    // Relaciones del modelo Game
 
     public function users(): BelongsToMany
     {
@@ -24,13 +24,15 @@ class Game extends Model
 
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class); // Un juego tiene muchos comentarios (que pueden tener likes y dislikes)
+        return $this->hasMany(Comment::class); // Un juego tiene muchos comentarios
     }
 
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class); // Muchos juegos pueden tener muchas etiquetas
     }
+
+    // Métodos 
 
     public function getArrayTags(): array
     {

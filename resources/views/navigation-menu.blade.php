@@ -5,7 +5,7 @@
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
                 <a href="{{ route('index') }}">
-                    <img src="{{Storage::url('images/circle.png')}}" width="40" height="40" alt="Logo">
+                    <img src="{{Storage::url('images/circle.png')}}" width="40" height="40" alt="Logo de GameZone">
                     <a class="text-white fw-bold ms-3"> GameZone </a>
                 </a>
             </div>

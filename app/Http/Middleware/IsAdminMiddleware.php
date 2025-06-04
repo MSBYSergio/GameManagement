@@ -18,8 +18,7 @@ class IsAdminMiddleware
     {
         if (Auth::user()->is_admin) {
             return $next($request);
-        } else {
-            return abort(403, 'OPERATION NOT SUPPORTED');
         }
+        return abort(403, 'NECESITAS SER ADMINISTRADOR');
     }
 }

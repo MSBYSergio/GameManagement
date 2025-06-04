@@ -33,7 +33,6 @@ class User extends Authenticatable
         'image',
         'name',
         'country',
-        'level',
         'email',
         'password',
     ];
@@ -72,7 +71,7 @@ class User extends Authenticatable
         ];
     }
 
-    // Relaciones
+    // Relaciones del modelo User
 
     public function games(): BelongsToMany
     {
