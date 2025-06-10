@@ -12,9 +12,9 @@
 
         <div class="d-flex flex-column align-items-center me-5">
             <a href="https://creativecommons.org/" target="_blank">
-                <img src="{{Storage::url('images/creative-commons.svg')}}"  alt="Creative Commons" style="height: 50px;">
+                <img src="{{Storage::url('images/mit-license.webp')}}"  alt="Mit License" style="height: 80px;">
             </a>
-            <a class="text-white fw-bold mt-1 h5" href="https://creativecommons.org/">Creative Commons</a>
+            <a class="text-white fw-bold mt-1 h5" href="https://creativecommons.org/">MIT License</a>
         </div>
 
         <div>

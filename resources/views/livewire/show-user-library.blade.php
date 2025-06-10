@@ -6,9 +6,11 @@
             <div class="col">
                 <div class="card h-100 border-0 hover:shadow-lg hover:border-2 hover:border-blue-500 hover:ring-2 hover:ring-blue-400 transition">
                     <div class="card border-0 shadow-lg overflow-hidden">
-                        <div class="card-header position-relative p-0" style="height: 150px; background: url('{{ Storage::url($item->image) }}') center center / cover no-repeat;">
-                            <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
-                        </div>
+                        <a href="{{route('game-details.show', $item -> id)}}">
+                            <div class="card-header position-relative p-0" style="height: 150px; background: url('{{ Storage::url($item->image) }}');">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="card-body bg-gray-800 text-white d-flex flex-column justify-between space-y-2 p-4">
